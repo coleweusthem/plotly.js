@@ -165,6 +165,7 @@
     }
   ],
   "layout": {
+    "showlegend": false,
     "title": {
       "text": "pattern options"
     },

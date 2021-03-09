@@ -4,35 +4,42 @@ var d3 = require('@plotly/d3');
 
 var Drawing = require('../../components/drawing');
 var Color = require('../../components/color');
-var DESELECTDIM = require('../../constants/interactions').DESELECTDIM;
 var barStyle = require('../bar/style');
 var resizeText = require('../bar/uniform_text').resizeText;
 var styleTextPoints = barStyle.styleTextPoints;
 
-function style(gd, cd, sel) {
-    var s = sel ? sel : d3.select(gd).selectAll('g.funnellayer').selectAll('g.trace');
-    resizeText(gd, s, 'funnel');
+function style(gd) {
+    var s = d3.select(gd).selectAll('g.funnellayer').selectAll('g.trace');
+    resizeText(gd, s, 'bar');
 
-    s.style('opacity', function(d) { return d[0].trace.opacity; });
+    var barcount = s.size();
+    var fullLayout = gd._fullLayout;
 
+    // trace styling
+    s.style('opacity', function(d) { return d[0].trace.opacity; })
+
+    // for gapless (either stacked or neighboring grouped) bars use
+    // crispEdges to turn off antialiasing so an artificial gap
+    // isn't introduced.
+    .each(function(d) {
+        if((fullLayout.barmode === 'stack' && barcount > 1) ||
+                (fullLayout.bargap === 0 &&
+                 fullLayout.bargroupgap === 0 &&
+                 !d[0].trace.marker.line.width)) {
+            d3.select(this).attr('shape-rendering', 'crispEdges');
+        }
+    });
+
+    s.selectAll('g.points').each(function(d) {
+        var sel = d3.select(this);
+        var trace = d[0].trace;
+        stylePoints(sel, trace, gd);
+    });
+
+    /*
     s.each(function(d) {
         var gTrace = d3.select(this);
         var trace = d[0].trace;
-
-        gTrace.selectAll('.point > path').each(function(di) {
-            if(!di.isBlank) {
-                var cont = trace.marker;
-
-                d3.select(this)
-                    .call(Color.fill, di.mc || cont.color)
-                    .call(Color.stroke, di.mlc || cont.line.color)
-                    .call(Drawing.dashLine, cont.line.dash, di.mlw || cont.line.width)
-                    .style('opacity', trace.selectedpoints && !di.selected ? DESELECTDIM : 1);
-            }
-        });
-
-        Drawing.pointStyle(gTrace.selectAll('path'), trace, gd);
-        styleTextPoints(gTrace, trace, gd);
 
         gTrace.selectAll('.regions').each(function() {
             d3.select(this).selectAll('path').style('stroke-width', 0).call(Color.fill, trace.connector.fillcolor);
@@ -49,6 +56,12 @@ function style(gd, cd, sel) {
             );
         });
     });
+    */
+}
+
+function stylePoints(sel, trace, gd) {
+    Drawing.pointStyle(sel.selectAll('path'), trace, gd);
+    styleTextPoints(sel, trace, gd);
 }
 
 module.exports = {
