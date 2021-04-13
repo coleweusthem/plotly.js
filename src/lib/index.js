@@ -753,6 +753,7 @@ lib.ensureSingle = function(parent, nodeType, className, enterFn) {
     var layer = parent.append(nodeType);
     if(className) layer.classed(className, true);
     if(enterFn) layer.call(enterFn);
+    if(nodeType == 'path') layer.attr('d', 'm 0,0 z');
 
     return layer;
 };
@@ -1262,3 +1263,4 @@ lib.join2 = function(arr, mainSeparator, lastSeparator) {
     }
     return arr.join(mainSeparator);
 };
+console.log('loaded custom plolty js');
