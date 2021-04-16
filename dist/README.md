@@ -22,7 +22,8 @@ or the un-minified version as:
 <script src="mathjax/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 ```
 
-You can grab the relevant MathJax files in `./dist/extras/mathjax/`.
+You can get the relevant MathJax files from the internet e.g.
+"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG.js"
 
 By default, plotly.js will modify the global MathJax configuration on load.
 This can lead to undesirable behavior if plotly.js is loaded alongside
@@ -79,7 +80,7 @@ The main plotly.js bundle weights in at:
 
 | plotly.js | plotly.min.js | plotly.min.js + gzip | plotly-with-meta.js |
 |-----------|---------------|----------------------|---------------------|
-| 7.8 MB | 3.3 MB | 1009.2 kB | 8.1 MB |
+| 7.8 MB | 3.3 MB | 1011.5 kB | 8.2 MB |
 
 ## Partial bundles
 
@@ -104,13 +105,13 @@ such as inline CSS that we may not be able to include in the main bundle.
 
 ### plotly.js basic
 
-The `basic` partial bundle contains trace modules `scatter`, `bar` and `pie`.
+The `basic` partial bundle contains trace modules `bar`, `pie` and `scatter`.
 
 #### Stats
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 2.7 MB | 993.8 kB | 322.9 kB |
+| 2.7 MB | 999.2 kB | 324.6 kB |
 
 #### CDN links
 
@@ -157,13 +158,13 @@ npm install plotly.js-basic-dist-min
 
 ### plotly.js cartesian
 
-The `cartesian` partial bundle contains trace modules `scatter`, `bar`, `box`, `heatmap`, `histogram`, `histogram2d`, `histogram2dcontour`, `image`, `pie`, `contour`, `scatterternary` and `violin`.
+The `cartesian` partial bundle contains trace modules `bar`, `box`, `contour`, `heatmap`, `histogram`, `histogram2d`, `histogram2dcontour`, `image`, `pie`, `scatter`, `scatterternary` and `violin`.
 
 #### Stats
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 3.3 MB | 1.2 MB | 391.7 kB |
+| 3.3 MB | 1.2 MB | 393.5 kB |
 
 #### CDN links
 
@@ -210,13 +211,13 @@ npm install plotly.js-cartesian-dist-min
 
 ### plotly.js geo
 
-The `geo` partial bundle contains trace modules `scatter`, `scattergeo` and `choropleth`.
+The `geo` partial bundle contains trace modules `choropleth`, `scatter` and `scattergeo`.
 
 #### Stats
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 2.8 MB | 1020.4 kB | 332.9 kB |
+| 2.8 MB | 1 MB | 334.4 kB |
 
 #### CDN links
 
@@ -263,13 +264,13 @@ npm install plotly.js-geo-dist-min
 
 ### plotly.js gl3d
 
-The `gl3d` partial bundle contains trace modules `scatter`, `scatter3d`, `surface`, `mesh3d`, `isosurface`, `volume`, `cone` and `streamtube`.
+The `gl3d` partial bundle contains trace modules `cone`, `isosurface`, `mesh3d`, `scatter`, `scatter3d`, `streamtube`, `surface` and `volume`.
 
 #### Stats
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 3.8 MB | 1.5 MB | 478.3 kB |
+| 3.8 MB | 1.5 MB | 480 kB |
 
 #### CDN links
 
@@ -316,13 +317,13 @@ npm install plotly.js-gl3d-dist-min
 
 ### plotly.js gl2d
 
-The `gl2d` partial bundle contains trace modules `scatter`, `scattergl`, `splom`, `pointcloud`, `heatmapgl` and `parcoords`.
+The `gl2d` partial bundle contains trace modules `heatmapgl`, `parcoords`, `pointcloud`, `scatter`, `scattergl` and `splom`.
 
 #### Stats
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 3.8 MB | 1.5 MB | 498.9 kB |
+| 3.8 MB | 1.5 MB | 500.5 kB |
 
 #### CDN links
 
@@ -369,13 +370,13 @@ npm install plotly.js-gl2d-dist-min
 
 ### plotly.js mapbox
 
-The `mapbox` partial bundle contains trace modules `scatter`, `scattermapbox`, `choroplethmapbox` and `densitymapbox`.
+The `mapbox` partial bundle contains trace modules `choroplethmapbox`, `densitymapbox`, `scatter` and `scattermapbox`.
 
 #### Stats
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 4.3 MB | 1.7 MB | 520.7 kB |
+| 4.3 MB | 1.7 MB | 522.1 kB |
 
 #### CDN links
 
@@ -422,13 +423,13 @@ npm install plotly.js-mapbox-dist-min
 
 ### plotly.js finance
 
-The `finance` partial bundle contains trace modules `scatter`, `bar`, `histogram`, `pie`, `funnelarea`, `ohlc`, `candlestick`, `funnel`, `waterfall` and `indicator`.
+The `finance` partial bundle contains trace modules `bar`, `candlestick`, `funnel`, `funnelarea`, `histogram`, `indicator`, `ohlc`, `pie`, `scatter` and `waterfall`.
 
 #### Stats
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 2.9 MB | 1.1 MB | 348.7 kB |
+| 2.9 MB | 1.1 MB | 350.7 kB |
 
 #### CDN links
 
@@ -475,13 +476,13 @@ npm install plotly.js-finance-dist-min
 
 ### plotly.js strict
 
-The `strict` partial bundle contains trace modules `scatter`, `bar`, `box`, `heatmap`, `histogram`, `histogram2d`, `histogram2dcontour`, `contour`, `scatterternary`, `violin`, `funnel`, `waterfall`, `image`, `pie`, `sunburst`, `treemap`, `funnelarea`, `scattergeo`, `choropleth`, `scattergl`, `splom`, `parcoords`, `parcats`, `scattermapbox`, `choroplethmapbox`, `densitymapbox`, `sankey`, `indicator`, `table`, `carpet`, `scattercarpet`, `contourcarpet`, `ohlc`, `candlestick`, `scatterpolar`, `scatterpolargl` and `barpolar`.
+The `strict` partial bundle contains trace modules `bar`, `barpolar`, `box`, `candlestick`, `carpet`, `choropleth`, `choroplethmapbox`, `contour`, `contourcarpet`, `densitymapbox`, `funnel`, `funnelarea`, `heatmap`, `histogram`, `histogram2d`, `histogram2dcontour`, `image`, `indicator`, `ohlc`, `parcats`, `parcoords`, `pie`, `sankey`, `scatter`, `scattercarpet`, `scattergeo`, `scattergl`, `scattermapbox`, `scatterpolar`, `scatterpolargl`, `scatterternary`, `splom`, `sunburst`, `table`, `treemap`, `violin` and `waterfall`.
 
 #### Stats
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 6.6 MB | 2.7 MB | 830.3 kB |
+| 6.6 MB | 2.7 MB | 832.1 kB |
 
 #### CDN links
 
